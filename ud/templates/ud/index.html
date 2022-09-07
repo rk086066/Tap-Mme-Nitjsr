@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>TAP NITJSR</title>
+   <!-- Favicon -->
+   {% load static %}
+    
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <!-- Typography CSS -->
+   <link rel="stylesheet" href="{% static 'css/typography.css' %}">
+   <!-- Style CSS -->
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+
+<body>
+   <!-- loading -->
+   <div id="loading">
+      <div id="loading-center">
+         <img src="{% static 'images/loader.gif'%}" alt="loder">
+      </div>
+   </div>
+   <!-- loading End -->
+   <!--=================================
+      Header -->
+   {% block content %}
+   <header id="header">
+      <div class="container-fluid">
+         <div class="row align-items-center">
+            <div class="col-lg-10">
+               <nav class="navbar navbar-expand-lg navbar-light">
+                  <a class="navbar-brand" href="{% url 'home' %}">
+                     <img class="logo" src="https://www.nitjsr.ac.in/static/media/logo_new.c32b27e1.png" alt="image">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                           <a class="nav-link active" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#about-us">About Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                           <a class="nav-link" href="#Notices">Notices</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'notice' %}">Upload Notices</a>
+                        </li>
+                        {%endif%}
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'resume'%}">Resume</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="{%url 'contact'%}">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="{% url 'pyqs'%}">PYQ's</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+            <div class="col-lg-2 text-right p-0">
+               <ul class="login">
+                  {% if request.user.is_authenticated %}
+                  <li class="d-inline pl-3 pl-md-0"><a href="{% url 'logout'%}">Logout</a></li>
+                  {%else%}
+                  <li class="d-inline pr-3 pr-md-2"><a href="{% url 'login'%}">Login</a></li>
+                  {%endif%}
+               </ul>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!--=================================
+      Header -->
+   <!--=================================
+      Banner -->
+
+   <div class="banner">
+      <div class="banner-text" id="banner">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-lg-6 col-md-12 col-sm-12 align-self-center">
+                  <h1>Traning and Placement Cell , </h1>
+                  <h1> NIT Jamshedpur</h1>
+                  <p class="mb-5"></p>
+                  <a href="{%url 'contact'%}" class="button mb-lg-0 mb-5">Contact Us</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--=================================
+      Banner -->
+   <!--=================================
+      MAIN CONTENT -->
+   <div class="main-content">
+      <section class="our-customer" id="Notices">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="title-box">
+                     <h2 class="title">Notices</h2>
+                     <p class="sub-title"></p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               {% for i in document %}
+               <div class="col-lg-6 position-relative main-customer">
+                  <div class="customer-box">
+                     <div class="customer-detail mb-4">
+                        <div class="float-left">
+                           <h4 class="font-weight-bold"><a href="#">{{i.subject}}</a></h4>
+                           <h5 class="text-gray font-weight-bold">Date: {{i.created}}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                     </div>
+                     <p class="iq-fw-600">{{i.text}}</p>
+                     <div class="notice_icon">
+                        <a href="{{i.notice.url}}" id="icon_"><i class="fa fa-download" aria-hidden="true"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </section>
+   </div>
+
+   <div class="main-content" id="about-us">
+      <section>
+         <div class="container">
+            <div class="row justify-content-around">
+               <div class="card__">
+                  <div class="single_card">
+                     <div class="card-img card_">
+                        <img src="../../../static/images/UD.png" width="210px" class="img-fluid" alt="images">
+                        <div class="team-details text-center">
+                           <h5 class="iq-fw-8 center_">Utkarsh Deep</h5>
+                           <h6 class="mb-10 center_">T&P Coordinator</h6>
+                        </div>
+
+                     </div>
+                     <ul class="info-share change_">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/utkarsh.deep.12" target="@"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/utkarsh-deep-578b321a1" target="@"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="" target="@"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzBWZbmwSlqGpHmHghQBMbpjFNmhbZBvghGQWCtpCZVgwTlnVsljpXtWRTxKrcKsvLKDrQd" target="@"><i class="fab fa-google"></i></a>
+                        </li>
+                        
+                        </li>
+                     </ul>
+                  </div>
+
+                  <div class="single_card">
+                     <div class="card-img card_">
+                        <img src="../../../static/images/Risikesh.png" width="210px" class="img-fluid" alt="images">
+                        <div class="team-details text-center">
+                           <h5 class="iq-fw-8 center_">Rishikesh Chauhan</h5>
+                           <h6 class="mb-10 center_">T&P Coordinator</h6>
+                        </div>
+
+                     </div>
+                     <ul class="info-share change_">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/profile.php?id=100006447847319" target="@"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/rishikesh-chauhan-5551601b1" target="@"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="#" target="@"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item"><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRzBWZbmwSlqGpHmHghQBMbpjFNmhbZBvghGQWCtpCZVgwTlnVsljpXtWRTxKrcKsvLKDrQd" target="@"><i class="fab fa-google"></i></a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <h2 class="mb-3 iq-fw-8 mt-5 mt-lg-0">Who We Are ?</h2>
+                  <So class="mb-3 iq-fw-6">This is <b>UTKARSH DEEP</b> and <b>RISHIKESH CHAUHAN</b>, we are  currently two of the fourteen Training and Placement Coordinator of NIT Jamshedpur. Our work is to invite companies for the recruitment from our college. We try to make the placement drive as smooth as possible for both the company as well as our batchmates. As we hold the position of Training and Placement Coordinator so we have to focus on the training part too, we try to bring Industrial training, Internship opportunities for the students also.So our main role is to help every batchmate in getting their dream job.</p>
+                  
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+   </div>
+
+
+
+
+   <!--=================================
+      MAIN CONTENT -->
+   <!--=================================
+      Footer -->
+
+   {% endblock content %}
+   <footer class="gray-bg">
+      <div class="container">
+         <div class="footer-bottom">
+            <div class="row">
+               <div class="col-auto mr-auto">
+                  <ul class="list-inline">
+                     <li class="list-inline-item mr-3 r-font-12"><a href="#termandcondition"
+                           class="text-gray iq-fw-6">Terms &
+                           Conditions</a></li>
+                     {% comment %} <li class="list-inline-item r-font-12"><a href="privacy-policy.html"
+                           class="text-gray iq-fw-6">Privacy Policy</a></li> {% endcomment %}
+                  </ul>
+               </div>
+               <div class="col-auto r-font-12">Developed By. <a href="https://www.linkedin.com/in/aman-ranjan-a7a01a185/" target="#" class="text-gray iq-fw-6">Aman </a>&<a href="https://www.linkedin.com/in/saurabh-verma-326672191/" target="#" class="text-gray iq-fw-6"> Saurabh</a>
+               </div>
+            </div>
+         </div>
+         <!-- back-to-top -->
+         <div id="back-to-top">
+            <a class="top" id="top" href="#top"> <i class="ion-ios-upload-outline"></i> </a>
+         </div>
+         <!-- back-to-top End -->
+   </footer>
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+   <!-- popper-->
+   <script src="{% static 'js/popper.min.js' %}"></script>
+   <!-- bootstrap -->
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   <!-- Owl Carousel -->
+   <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+   <!-- slick -->
+   <script src="{% static 'js/slick.min.js' %}"></script>
+   <!-- Magnific Popup js-->
+   <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+   <!-- jquery countdown -->
+   <script src="{% static 'js/countdown.js' %}"></script>
+   <!-- swiper -->
+   <script src="{% static 'js/swiper.min.js' %}"></script>
+   <!-- Wow -->
+   <script src="{% static 'js/wow.min.js' %}"></script>
+   <!-- Custom -->
+   <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>

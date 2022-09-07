@@ -1,0 +1,89 @@
+{% extends 'ud/index.html' %} {% block content %}
+
+<div class="breadcrumb-main">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-auto mr-auto">
+        <h2 class="iq-fw-8 text-white mb-0">About Us</h2>
+      </div>
+      <div class="col-auto text-right">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{%url 'home'%}" class="iq-fw-6"
+                ><i class="ion-android-home"></i>Home</a
+              >
+            </li>
+            <li class="breadcrumb-item active iq-fw-6" aria-current="page">
+              About Us
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!--=================================
+      Banner -->
+<!--=================================
+      MAIN CONTENT -->
+{% load static %}
+<div class="main-content">
+  <section>
+    <div class="container">
+      <div class="row justify-content-around">
+        <div class="card__">
+          <div class="card-img card_">
+            <img
+              src="{%static 'images/passport.jpg'%}"
+              class="img-fluid"
+              alt="images"
+            />
+            <div class="team-details text-center">
+              <h5 class="iq-fw-8 center_">UTKARSH DEEP</h5>
+              <h6 class="mb-10 center_">T&P Coordinator</h6>
+            </div>
+          </div>
+          <ul class="info-share change_">
+            <li class="list-inline-item">
+              <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="javascript:void(0)"><i class="fab fa-google"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <h2 class="mb-3 iq-fw-8 mt-5 mt-lg-0">Who We Are ?</h2>
+          <p class="mb-3 iq-fw-6">
+            The point of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content
+            here', making it look like readable English. Many desktop publishing
+            packages and web page editors now use Lorem Ipsum as their default
+            model text, and a search for 'lorem ipsum' will uncover many web
+            sites still in their infancy.
+          </p>
+          <p class="iq-fw-6">
+            The point of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content
+            here', making it look like readable English. Many desktop publishing
+            packages and web page editors now use.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!--=================================
+      MAIN CONTENT -->
+<!--=================================
+      Footer -->
+
+<!-- Optional JavaScript -->
+{%endblock content%}

@@ -1,0 +1,1 @@
+web: gunicorn TAP_CELL.wsgi --log-file -

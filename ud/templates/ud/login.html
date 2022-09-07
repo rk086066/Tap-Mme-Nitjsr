@@ -1,0 +1,160 @@
+{% extends 'ud/index.html' %}
+<!-- Header-->
+{% block content %}
+<!-- About -->
+<header id="header" class="header1">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-lg-10">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img
+              class="logo"
+              src="https://www.nitjsr.ac.in/static/media/logo_new.c32b27e1.png"
+              alt="image"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home'%}">About Us</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home'%}">Notices</a>
+              </li>
+              {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'notice' %}">Upload Notices</a>
+              </li>
+              {%endif%}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'resume'%}">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'contact'%}">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'pyqs'%}">PYQ's</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="col-lg-2 text-right p-0">
+        <ul class="login">
+          {% if request.user.is_authenticated %}
+          <li class="d-inline pl-3 pl-md-0">
+            <a href="{% url 'logout'%}">Logout</a>
+          </li>
+          {%else%}
+          <li class="d-inline pr-3 pr-md-2">
+            <a href="{% url 'login'%}">Login</a>
+          </li>
+          {%endif%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="breadcrumb-main">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-auto mr-auto">
+        <h2 class="iq-fw-8 text-white mb-0">Login</h2>
+      </div>
+      <div class="col-auto text-right">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="index.html" class="iq-fw-6"
+                ><i class="ion-android-home"></i>Home</a
+              >
+            </li>
+            <li class="breadcrumb-item active iq-fw-6" aria-current="page">
+              Login
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About End -->
+<!--=================================
+    MAIN CONTENT -->
+<div class="main-content">
+  <!--================================
+      Login -->
+  <section class="iq-login-regi">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-5 mb-lg-0 mb-md-0">
+          <h2>Login</h2>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="iq-login iq-rmt-20">
+            <form method="POST">
+              {%csrf_token%}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input
+                  type="text"
+                  class="form-control email-bg"
+                  id="exampleInputEmail1"
+                  placeholder="Username"
+                  name="username"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  class="form-control email-bg"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  name="password"
+                />
+              </div>
+              <button type="submit" class="button">Submit</button>
+            </form>
+            <div class="row">
+              <div class="col-sm-6">
+                <a href="#" class="link">Forgot Password?</a>
+              </div>
+              {% comment %}
+              <div class="col-md-6 col-sm-12">
+                <div class="text-right">
+                  <div class="link">Don't Have an Account?</div>
+                  <div class="link"><a href="#">Register Now</a></div>
+                </div>
+              </div>
+              {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================================
+      Login -->
+</div>
+<!--=================================
+    MAIN CONTENT  END-->
+
+{% endblock content %}
